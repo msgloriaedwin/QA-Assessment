@@ -1,0 +1,1120 @@
+{
+	"info": {
+		"_postman_id": "5f25c07f-fe83-4ede-aa4f-d840d755f76b",
+		"name": "PetStoreAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21154883",
+		"_collection_link": "https://www.postman.com/gloriaqa/gloria-edwin/collection/tr4lu2o/petstoreapi?action=share&source=collection_link&creator=21154883"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"username\": \"Gloria.qa\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with Already Existing User Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"username\": \"Gloria.qa\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with Empty Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"username\": \"\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with Missing ID Field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with Missing Email Field",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"username\": \"Gloria.qa\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with FirstName as Integer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"username\": \"Gloria.qa\",\n  \"firstName\": 1234567898090,\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with Incomplete Phone Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"username\": \"Gloria.qa\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"080\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User with Invalid Email Format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1,\n  \"username\": \"Gloria.qa\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"gloria.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"080\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Users with List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"id\": 2,\n    \"username\": \"Ria\",\n    \"firstName\": \"Globacom\",\n    \"lastName\": \"Lastname\",\n    \"email\": \"ria@mailinator.com\",\n    \"password\": \"password1\",\n    \"phone\": \"08034165857\",\n    \"userStatus\": 1\n  },\n  {\n    \"id\": 3,\n    \"username\": \"Kels\",\n    \"firstName\": \"Kelechi\",\n    \"lastName\": \"Testing\",\n    \"email\": \"kels@mailinator.com\",\n    \"password\": \"Gloria1@kels\",\n    \"phone\": \"09076543211\",\n    \"userStatus\": 2\n  }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}user/createWithList",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								"createWithList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Users with Array",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"id\": 2,\n    \"username\": \"Ria\",\n    \"firstName\": \"Globacom\",\n    \"lastName\": \"Lastname\",\n    \"email\": \"ria@mailinator.com\",\n    \"password\": \"password1\",\n    \"phone\": \"08034165857\",\n    \"userStatus\": 1\n  },\n  {\n    \"id\": 3,\n    \"username\": \"Kels\",\n    \"firstName\": \"Kelechi\",\n    \"lastName\": \"Testing\",\n    \"email\": \"kels@mailinator.com\",\n    \"password\": \"Gloria1@kels\",\n    \"phone\": \"09076543211\",\n    \"userStatus\": 2\n  }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/createWithArray",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"createWithArray"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Users with Existing Users Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"id\": 2,\n    \"username\": \"Ria\",\n    \"firstName\": \"Globacom\",\n    \"lastName\": \"Lastname\",\n    \"email\": \"ria@mailinator.com\",\n    \"password\": \"password1\",\n    \"phone\": \"08034165857\",\n    \"userStatus\": 1\n  },\n  {\n    \"id\": 3,\n    \"username\": \"Kels\",\n    \"firstName\": \"Kelechi\",\n    \"lastName\": \"Testing\",\n    \"email\": \"kels@mailinator.com\",\n    \"password\": \"Gloria1@kels\",\n    \"phone\": \"09076543211\",\n    \"userStatus\": 2\n  }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/createWithArray",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"createWithArray"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Users with Empty Array",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  \n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/createWithArray",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"createWithArray"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Users with Missing Fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"username\": \"Ria\",\n    \"firstName\": \"Globacom\",\n    \"lastName\": \"Lastname\",\n    \"password\": \"password1\",\n    \"phone\": \"08034165857\",\n    \"userStatus\": 1\n  },\n  {\n    \"id\": 3,\n    \"username\": \"Kels\",\n    \"email\": \"kels@mailinator.com\",\n    \"password\": \"Gloria1@kels\",\n    \"phone\": \"09076543211\",\n    \"userStatus\": 2\n  }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/createWithArray",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"createWithArray"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Users with Invalid Email Format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"id\": 2,\n    \"username\": \"Ria\",\n    \"firstName\": \"Globacom\",\n    \"lastName\": \"Lastname\",\n    \"email\": 12123443456,\n    \"password\": \"password1\",\n    \"phone\": \"08034165857\",\n    \"userStatus\": 1\n  },\n  {\n    \"id\": 3,\n    \"username\": \"Kels\",\n    \"firstName\": \"Kelechi\",\n    \"lastName\": \"Testing\",\n    \"email\": \"kels@mailinator.com\",\n    \"password\": \"Gloria1@kels\",\n    \"phone\": \"09076543211\",\n    \"userStatus\": 2\n  }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/createWithArray",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"createWithArray"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/Gloria.spec",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"Gloria.spec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User with Invalid Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"\tpm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"\tpm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/floria.qa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"floria.qa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"1\",\n  \"username\": \"Spec\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/Gloria.qa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"Gloria.qa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User with Invalid Email Format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"1\",\n  \"username\": \"Gloria.spec\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwin\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/Gloria.qa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"Gloria.qa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User with Invalid Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"1\",\n  \"username\": \"Gloria.spec\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/Gloria",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"Gloria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User with Missing Fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/Gloria.spec",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"Gloria.spec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User (Wrong Syntax)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"sdjkfbsdjfbdsjfbdsf\",\n  \"username\": \"Spec\",\n  \"firstName\": \"Gloria\",\n  \"lastName\": \"Edwin\",\n  \"email\": \"edwingloria.k@gmail.com\",\n  \"password\": \"Edwin1@kelss\",\n  \"phone\": \"08065365293\",\n  \"userStatus\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/Gloria.user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"Gloria.user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/Gloria.qa",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"Gloria.qa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User with Invalid Username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/remi",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"remi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"\tpm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"\tpm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "petstore.swagger.io/v2"
+		}
+	]
+}
